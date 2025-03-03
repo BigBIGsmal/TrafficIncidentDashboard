@@ -1,13 +1,13 @@
 from flask import Flask
 from flask_cors import CORS
-from api.routes import api
+from api import api  # Import Blueprint correctly
 
 app = Flask(__name__)
 
-# Apply CORS to API routes only
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+# Apply CORS to all routes
+CORS(app)
 
-# Register API routes
+# Register API Blueprint
 app.register_blueprint(api)
 
 if __name__ == '__main__':
